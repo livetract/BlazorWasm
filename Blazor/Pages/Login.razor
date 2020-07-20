@@ -1,0 +1,36 @@
+﻿@page "/Login"
+<h3>Login</h3>
+
+<EditForm Model="_loginModel" OnValidSubmit="ValidSubmit">
+    <DataAnnotationsValidator />
+        <ValidationSummary />
+    
+        <p>
+            <label>
+                <InputText @bind-Value="_loginModel.UserName" />
+            </label>
+        </p>
+    <p>
+        <label>
+            <InputText @bind-Value="_loginModel.Password" />
+        </label>
+    </p>
+     <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+
+    private LoginModel _loginModel;
+    protected override void OnInitialized()
+    {
+        _loginModel = new LoginModel();
+        
+        base.OnInitialized();
+    }
+
+    private void ValidSubmit()
+    {
+        
+    }
+
+}
