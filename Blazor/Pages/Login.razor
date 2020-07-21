@@ -1,4 +1,6 @@
 ﻿@page "/Login"
+@inject IHttpClientFactory HttpClientFactory
+
 <h3>Login</h3>
 
 <EditForm Model="_loginModel" OnValidSubmit="ValidSubmit">
@@ -17,10 +19,20 @@
     </p>
      <button type="submit">Submit</button>
 </EditForm>
+<hr/>
 
+@if (string.IsNullOrEmpty(msg))
+{
+    <p>数据还没有加载出来哦</p>
+}
+else
+{
+    <p>token:   @msg</p>
+}
 @code {
 
     private LoginModel _loginModel;
+    private string msg;
     protected override void OnInitialized()
     {
         _loginModel = new LoginModel();
@@ -28,9 +40,16 @@
         base.OnInitialized();
     }
 
-    private void ValidSubmit()
+    private async Task ValidSubmit()
     {
-        
+        var client = HttpClientFactory.CreateClient("auth");
+
+        var res = await client.PostAsJsonAsync("auth/signin", _loginModel);
+
+        var header = res.Headers.TryGetValues("Authorization", out var tokens);
+
+        var token = tokens.FirstOrDefault();
+        msg = token;
     }
 
 }

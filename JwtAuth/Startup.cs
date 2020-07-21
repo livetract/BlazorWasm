@@ -41,6 +41,7 @@ namespace JwtAuth
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowAnyOrigin()
+                .WithExposedHeaders("Authorization")
             ));
             
         }
