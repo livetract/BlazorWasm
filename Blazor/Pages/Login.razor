@@ -1,5 +1,5 @@
-﻿@page "/Login"
-@inject IHttpClientFactory HttpClientFactory
+﻿@page "/login"
+@inject IAuthService AuthProvider
 
 <h3>Login</h3>
 
@@ -19,20 +19,16 @@
     </p>
     <button type="submit">Submit</button>
 </EditForm>
-<hr />
-
-
-
-
 
 @if (string.IsNullOrEmpty(msg))
 {
-    <p>数据还没有加载出来哦</p>
+    <p>现在还没有数据</p>
 }
 else
 {
-    <p>token:   @msg</p>
+    <p>@msg</p>
 }
+
 @code {
 
     private LoginModel _loginModel;
@@ -46,14 +42,7 @@ else
 
     private async Task ValidSubmit()
     {
-        var client = HttpClientFactory.CreateClient("auth");
-
-        var res = await client.PostAsJsonAsync("auth/signin", _loginModel);
-
-        var header = res.Headers.TryGetValues("Authorization", out var tokens);
-
-        var token = tokens.FirstOrDefault();
-        msg = token;
+        msg = await AuthProvider.Login(_loginModel);
     }
 
 }
