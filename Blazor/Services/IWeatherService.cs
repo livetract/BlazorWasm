@@ -7,5 +7,7 @@ namespace Blazor.Services
     public interface IWeatherService
     {
         Task<IEnumerable<WeatherForecast>> GetDataAsync();
+
+        Task<IEnumerable<TodoItem>> GetTodoItemsAsync();
     }
 }

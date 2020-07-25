@@ -22,5 +22,12 @@ namespace Blazor.Services
             var data = await client.GetFromJsonAsync<IEnumerable<WeatherForecast>>("weatherforecast");
             return data;
         }
+
+        public async Task<IEnumerable<TodoItem>> GetTodoItemsAsync()
+        {
+            var client = _httpClientFactory.CreateClient("weather");
+            var data = await client.GetFromJsonAsync<IEnumerable<TodoItem>>("todo");
+            return data;
+        }
     }
 }
