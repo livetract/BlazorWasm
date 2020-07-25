@@ -5,21 +5,35 @@
 
 <EditForm Model="_loginModel" OnValidSubmit="ValidSubmit">
     <DataAnnotationsValidator />
-        <ValidationSummary />
-    
-        <p>
-            <label>
-                <InputText @bind-Value="_loginModel.UserName" />
-            </label>
-        </p>
+    <ValidationSummary />
+
+    <p>
+        <label>
+            <InputText @bind-Value="_loginModel.UserName" />
+        </label>
+    </p>
     <p>
         <label>
             <InputText @bind-Value="_loginModel.Password" />
         </label>
     </p>
-     <button type="submit">Submit</button>
+    <button type="submit">Submit</button>
 </EditForm>
-<hr/>
+<hr />
+
+
+<AuthorizeView>
+    <Authorized>
+        <h1>Hello, @context.User.Identity.Name!</h1>
+        <p>You can only see this content if you're authenticated.</p>
+    </Authorized>
+    <NotAuthorized>
+        <h1>Authentication Failure!</h1>
+        <p>You're not signed in.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+
 
 @if (string.IsNullOrEmpty(msg))
 {
@@ -36,7 +50,7 @@ else
     protected override void OnInitialized()
     {
         _loginModel = new LoginModel();
-        
+
         base.OnInitialized();
     }
 
