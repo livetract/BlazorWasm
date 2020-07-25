@@ -20,7 +20,7 @@ namespace Blazor
             builder.Services.AddHttpClient("auth", client => client.BaseAddress = new Uri("https://localhost:9001/api/"));
 
             builder.Services.AddScoped<IWeatherService, WeatherService>();
-            builder.Services.AddScoped<AuthenticationStateProvider, MyAuthenticationStateProvider>();
+            builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
             await builder.Build().RunAsync();
         }
