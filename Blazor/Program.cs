@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using Microsoft.Extensions.Configuration;
 
 namespace Blazor
 {
@@ -25,7 +26,10 @@ namespace Blazor
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
             
             builder.Services.AddBlazoredLocalStorage();
-            builder.Services.AddAuthorizationCore();
+            builder.Services.AddOidcAuthentication(options =>
+            {
+                builder.Configuration.Bind("Local", options.ProviderOptions);
+            });
 
             await builder.Build().RunAsync();
         }

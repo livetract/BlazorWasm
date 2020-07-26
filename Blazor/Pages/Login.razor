@@ -9,12 +9,12 @@
 
     <p>
         <label>
-            <InputText @bind-Value="_loginModel.UserName" />
+            <InputText @bind-Value="_loginModel.UserName" placeholder="唐艳玲" />
         </label>
     </p>
     <p>
         <label>
-            <InputText @bind-Value="_loginModel.Password" />
+            <InputText @bind-Value="_loginModel.Password" placeholder="123456" />
         </label>
     </p>
     <button type="submit">Submit</button>
@@ -42,7 +42,8 @@ else
 
     private async Task ValidSubmit()
     {
+        _loginModel.Password = "123456";
+        _loginModel.UserName = "唐艳玲";
         msg = await AuthProvider.Login(_loginModel);
     }
-
 }
