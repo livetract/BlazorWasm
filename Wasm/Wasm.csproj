@@ -30,7 +30,6 @@
     <ItemGroup>
       <Folder Include="Areas\Auth\Models" />
       <Folder Include="Areas\Auth\Pages" />
-      <Folder Include="Areas\Auth\Services\" />
     </ItemGroup>
 
 </Project>
