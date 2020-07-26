@@ -25,6 +25,7 @@ namespace Wasm
             builder.Services.AddScoped<IWeatherService, WeatherService>();
             builder.Services.AddScoped<ITodoService, TodoService>();
             builder.Services.AddScoped<IUniversalService, UniversalService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddOidcAuthentication(options => { builder.Configuration.Bind("Local", options.ProviderOptions); });
 

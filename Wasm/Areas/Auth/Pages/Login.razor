@@ -1,0 +1,42 @@
+﻿@page "/auth/login"
+
+@inject IAuthService AuthServiceProvider
+
+
+<h3>Login</h3>
+
+<EditForm Model="_loginModel" OnValidSubmit="ValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            <InputText @bind-Value="_loginModel.UserName" placeholder="唐艳玲" />
+        </label>
+    </p>
+    <p>
+        <label>
+            <InputText @bind-Value="_loginModel.Password" placeholder="123456" />
+        </label>
+    </p>
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+@code {
+    private LoginModel _loginModel;
+
+    protected override void OnInitialized()
+    {
+        _loginModel = new LoginModel();
+
+        base.OnInitialized();
+    }
+
+    private async Task ValidSubmit()
+    {
+        _loginModel.Password = "123456";
+        _loginModel.UserName = "唐艳玲";
+        await AuthServiceProvider.Login(_loginModel);
+    }
+}

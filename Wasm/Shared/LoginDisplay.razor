@@ -1,0 +1,28 @@
+@inject NavigationManager Navigation
+
+
+<AuthorizeView>
+    <Authorized>
+        <p>Hello, @context.User.Identity.Name !</p>
+        <button>退出</button>
+    </Authorized>
+
+    <Authorizing>
+        <p>正在与服务器通讯中···</p>
+    </Authorizing>
+
+    <NotAuthorized>
+        <p>Hello, 欢迎访问本站</p>
+        <button @onclick ="GoLogin">登录</button>
+        <button>注册</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+@code
+{
+    private void GoLogin()
+    {
+        Navigation.NavigateTo("/auth/login");
+    }
+}

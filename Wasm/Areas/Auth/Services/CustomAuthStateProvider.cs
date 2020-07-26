@@ -34,12 +34,7 @@ namespace Wasm.Areas.Auth.Services
         }
 
 
-        public void MarkUserAsAuthenticated()
-        {
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-        }
-
-        public void MarkUserAsLoggedOut()
+        public void ModifyAuthState()
         {
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApi", "WeatherApi\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuth", "JwtAuth\JwtAuth.csproj", "{001BCED1-D49A-400A-8CB2-2E08698F1183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wasm", "Wasm\Wasm.csproj", "{AFBB1D5C-57A4-4322-8D95-C3805DE61A97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wasm", "Wasm\Wasm.csproj", "{AFBB1D5C-57A4-4322-8D95-C3805DE61A97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

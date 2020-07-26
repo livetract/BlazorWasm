@@ -29,7 +29,6 @@
 
     <ItemGroup>
       <Folder Include="Areas\Auth\Models" />
-      <Folder Include="Areas\Auth\Pages" />
     </ItemGroup>
 
 </Project>
