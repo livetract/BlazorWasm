@@ -29,6 +29,8 @@ namespace JwtAuth.Services
         {
             Claim[] claims = new[]
             {
+                new Claim(ClaimTypes.Name, model.UserName),
+                new Claim(ClaimTypes.Sid, model.Id),
                 new Claim(JwtRegisteredClaimNames.Sub, model.UserName), 
                 new Claim(JwtRegisteredClaimNames.Jti, model.Id.ToString()), 
             };
