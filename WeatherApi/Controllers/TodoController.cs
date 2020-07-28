@@ -6,7 +6,7 @@ using WeatherApi.Models;
 
 namespace WeatherApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TodoController : ControllerBase
