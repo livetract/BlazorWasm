@@ -24,7 +24,7 @@
 {
     private void GoLogin()
     {
-        Navigation.NavigateTo("/auth/login");
+        Navigation.NavigateTo($"/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
     }
 
     private void LogOut()
