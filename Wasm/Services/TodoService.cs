@@ -29,7 +29,7 @@ namespace Wasm.Services
             {
                 return await _httpClient.GetFromJsonAsync<IEnumerable<TodoItem>>(BaseUri);
             }
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+            
             return await _httpClient.GetFromJsonAsync<IEnumerable<TodoItem>>(BaseUri);
         }
     }

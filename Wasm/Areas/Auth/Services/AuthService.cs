@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Wasm.Areas.Auth.Dtos;
@@ -50,6 +51,7 @@ namespace Wasm.Areas.Auth.Services
 
             await _localStorage.SetItemAsync("authToken", token);
             ((CustomAuthStateProvider)_authenticationStateProvider).ModifyAuthState();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
         }
 
         public async Task Logout()
@@ -58,6 +60,7 @@ namespace Wasm.Areas.Auth.Services
 
             await _localStorage.RemoveItemAsync("authToken");
             ((CustomAuthStateProvider)_authenticationStateProvider).ModifyAuthState();
+            httpClient.DefaultRequestHeaders.Authorization = null;
         }
     }
 }
