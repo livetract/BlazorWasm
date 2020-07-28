@@ -3,9 +3,9 @@
 @using Wasm.Services
 
 @inject ITodoService TodoProvider
+@attribute [Authorize]
 
 <h1>Todo List</h1>
-
 
 @if (_items == null)
 {
@@ -17,26 +17,29 @@ else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-            <th>内容</th>
-            <th>是否完成</th>
-        </tr>
+            <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>是否完成</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var item in _items)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Title</td>
-                <td>@item.Content</td>
-                <td>@item.IsCompleted</td>
-            </tr>
-        }
+            @foreach (var item in _items)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.Content</td>
+                    <td>@item.IsCompleted</td>
+                </tr>
+            }
         </tbody>
     </table>
 }
+
+
+
 
 @code {
     private IEnumerable<TodoItem> _items;
